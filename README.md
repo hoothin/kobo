@@ -8,7 +8,7 @@ KOBO 电纸书解决方案
 
 2. Autoshelf 与 ksm中的USB模拟冲突
 
-下载[autoshelf.sh](autoshelf.sh)替换至autoshelf目录
+下载[autoshelf.sh](autoshelf.sh)替换至autoshelf目录，改后无法开关，断开usb必会更新书架
 
 3. pocket抓取机核rss失败
 
