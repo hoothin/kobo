@@ -1,5 +1,4 @@
 <?php
-$mySite="http://xxx.xxx.com";
 $rssUrl="https://www.g-cores.com/rss";
 $rssArticle="https://www.g-cores.com/articles/";
 empty($_GET['type']) && $_GET['type'] = '';
@@ -40,7 +39,7 @@ switch($type){
 		break;
 	default:
 		header("Content-Type:text/xml;charset=utf-8");
-		echo preg_replace('/<link>https:\/\/www\.g\-cores\.com\/articles\/(\d+)/i',"<link>".$mySite."/g-cores.php?type=html&amp;id=$1",$html);
+		echo preg_replace('/<link>https:\/\/www\.g\-cores\.com\/articles\/(\d+)/i',"<link>".'http:'.($_SERVER["HTTPS"] == 'on'?'s':'').'//'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$_SERVER['PHP_SELF']."?type=html&amp;id=$1",$html);
 		break;
 }
 ?>
