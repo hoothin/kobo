@@ -10,7 +10,8 @@ $html=file_get_contents("compress.zlib://".$rssUrl);
 switch($type){
 	case "html":
 		header("Content-Type:text/html;charset=utf-8");
-		$xml_array=simplexml_load_file($rssUrl);
+		$html=preg_replace('/[\x00-\x1F\x7F]/',"",$html);
+		$xml_array=simplexml_load_string($html);
 	    foreach($xml_array as $tmp){
 	    	foreach($tmp as $tmpItem){
 		    	if($tmpItem->link==$rssArticle.$id){
