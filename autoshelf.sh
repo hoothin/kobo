@@ -230,13 +230,23 @@ udev_workarounds
 if [ "$ACTION" == "add" ]
 then
     # prompt mode
+    OFF=1
     rm /tmp/autoshelf-on
-    sleep 2
-    grep /mnt/onboard /proc/mounts && exit
-    # pngshow "/usr/local/AutoShelf/autoshelf-off.png"
-
-    touch /tmp/autoshelf-on
-
+    while cat /dev/input/event1 | dd bs=1 count=1
+    do
+        grep /mnt/onboard /proc/mounts && exit
+        if [ "$OFF" == "1" ]
+        then
+            OFF=0
+            touch /tmp/autoshelf-on
+            pngshow "/usr/local/AutoShelf/autoshelf.png"
+        else
+            OFF=1
+            rm /tmp/autoshelf-on
+            pngshow "/usr/local/AutoShelf/autoshelf-off.png"
+        fi
+        sleep 1
+    done    
     exit
     # exit prompt mode
 elif [ "$ACTION" != "remove" ]
