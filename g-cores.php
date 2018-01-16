@@ -16,7 +16,8 @@ switch($type){
 	    	foreach($tmp as $tmpItem){
 		    	if($tmpItem->link==$rssArticle.$id){
 
-					echo '<!DOCTYPE html>
+					echo '
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -27,7 +28,7 @@ switch($type){
 <body class="body-fixedNavbar">
     <div class="wrapper">
         <div id="j_story_18185" class="story">
-            <div class="story_elem story_elem-text ">'.$tmpItem->description.'</div>
+            <div class="story_elem story_elem-text ">'.$tmpItem->description.'<a href=https://www.g-cores.com/articles/'.$id.'>原文</a>'.'</div>
         </div>
     </div>
 </body>
